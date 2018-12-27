@@ -6,6 +6,14 @@ Made for [OpenAI Gym](https://gym.openai.com).
 
 Play the game as a human [here](https://github.com/ZhengdongWang/loonminator).
 
+# About
+
+The important stuff is in `loonminator_rl.ipynb` and `loon_env.py`
+
+Documentation/implementation of the reinforcement learning is provided in the Jupyter notebook
+
+Documentation/implementation of the OpenAI Gym environment is provided in the environment Python file.
+
 # Installation
 
 Requires [TensorFlow](https://www.tensorflow.org/install/), [Keras](https://keras.io/#installation), [keras-rl](https://github.com/keras-rl/keras-rl), and numpy.

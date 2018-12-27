@@ -7,6 +7,19 @@ from gym.utils import seeding
 # python file to know wind speeds and directions
 import winds
 
+# this is the loon game environment for openai gym, a toolkit for comparing reinforcement learning
+
+# main four functions are
+# def __init__(self):							initializes the gym env, initial state of rl problem
+# def step(self, action):						takes a possible action and returns the next state
+#												also returns reward for current state
+# def reset(self):								resets the state
+# def render(self, mode='human', close=False):	visualize the env for humans
+
+# the agent tries to maximize the reward, so the measure used to win loonminator is the distance to the city
+# want to have a higher score as any loon gets closer to the city
+# subtract the current minimum distance between any loon to the city from the maximum possible distance
+
 class Loon:
 	# loon class for balloons
 	def __init__(self):
@@ -23,7 +36,7 @@ class Loon:
 		self.alt = alt
 
 class LoonEnv(gym.Env):
-	# environment for gym to play with
+	# environment for agent to play with
 	metadata = {'render.modes': ['human']}
 	def __init__(self):
 		# call this initialization to make resets easier
@@ -165,6 +178,8 @@ class LoonEnv(gym.Env):
 		# based on mindist, want higher score the closer to the city
 		# therefore, subtract current distance from max distance possible
 		return self.maxdist - self.mindist
+
+		# alternative measure of reward
 		# based on percent over city
 		# if self.curr_step == 0:
 		# 	return 0.0
