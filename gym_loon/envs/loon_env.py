@@ -4,7 +4,7 @@ import gym
 import numpy as np
 from gym import error, spaces, utils
 from gym.utils import seeding
-# import winds python file to know wind speeds and directions
+# python file to know wind speeds and directions
 import winds
 
 class Loon:
@@ -43,6 +43,8 @@ class LoonEnv(gym.Env):
 		# dimensions of the game window match human game
 		self.xdim = 1200
 		self.ydim = 700
+		# define maximum distance from city to subtract from for better scoring
+		self.maxdist = math.sqrt(self.xdim**2 + self.ydim**2)
 		# dimensions of the grid
 		self.map_scale = 100
 		# radius of each loon
@@ -50,7 +52,7 @@ class LoonEnv(gym.Env):
 		# how fast the loons move
 		self.speed = 5
 		# record the min distance from city to any loon for scoring and rewards
-		self.mindist = float('inf')
+		self.mindist = self.maxdist
 		# game variables defining rewards
 		# total time elapsed
 		self.curr_step = 0
@@ -160,13 +162,14 @@ class LoonEnv(gym.Env):
 
 	def _get_reward(self):
 		# update reward
-		# based on mindist
-		# return self.mindist
+		# based on mindist, want higher score the closer to the city
+		# therefore, subtract current distance from max distance possible
+		return self.maxdist - self.mindist
 		# based on percent over city
-		if self.curr_step == 0:
-			return 0.0
-		else:
-			return self.time_over / self.curr_step
+		# if self.curr_step == 0:
+		# 	return 0.0
+		# else:
+		# 	return self.time_over / self.curr_step
 
 	def reset(self):
 		# reset environment and returns initial observation
