@@ -1,10 +1,10 @@
-# Loon Reinforcement Learning Environment
+# Always Blue Reinforcement Learning Environment
 
-The Game Loonminator played by AI.
+The Game Always Blue played by AI (renamed from Loominator).
 
 Made for [OpenAI Gym](https://gym.openai.com).
 
-Play the game as a human [here](https://github.com/ZhengdongWang/loonminator).
+Play the game as a human [here](https://github.com/ZhengdongWang/always_blue).
 
 # About
 
